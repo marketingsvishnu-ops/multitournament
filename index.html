@@ -1,570 +1,357 @@
-```html
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo</title>
 
-    <title>MULTICRIC | Gully Cricket Tournament 2026</title>
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
-        }
+body{
+  background:#0f1020;
+  color:white;
+}
 
-        body {
-            background: #f4f4f4;
-            color: #222;
-        }
+.container{
+  display:flex;
+  flex-direction:row-reverse;
+  min-height:100vh;
+}
 
-        /* =========================
-           HERO SECTION
-        ========================== */
+.demo{
+  width:70%;
+  background:#111;
+  position:relative;
+}
 
-        .hero {
-            min-height: 78vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 50px 20px;
-            color: white;
+iframe{
+  width:100%;
+  height:100vh;
+  border:none;
+}
 
-            background:
-                linear-gradient(
-                    rgba(0, 0, 0, 0.70),
-                    rgba(120, 0, 0, 0.75)
-                ),
-                url("https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=1600&q=80")
-                center/cover no-repeat;
-        }
+.right{
+  width:30%;
+  padding:30px 22px;
+  background:linear-gradient(180deg,#181a35,#0b0c18);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow-y:auto;
+}
 
-        .hero-content {
-            max-width: 850px;
-        }
+.box{
+  width:100%;
+  background:rgba(10,10,10,.88);
+  border:1px solid #d4af37;
+  border-radius:22px;
+  padding:26px 20px;
+  text-align:center;
+  box-shadow:0 0 35px rgba(212,175,55,.28);
+}
 
-        .logo {
-            font-size: 64px;
-            font-weight: 900;
-            letter-spacing: 7px;
-            margin-bottom: 15px;
-        }
+.badge{
+  display:inline-block;
+  background:#d4af37;
+  color:#111;
+  padding:8px 18px;
+  border-radius:30px;
+  font-weight:800;
+  margin-bottom:16px;
+}
 
-        .hero h2 {
-            font-size: 42px;
-            margin-bottom: 18px;
-        }
+h1{
+  font-size:34px;
+  color:#ffd86b;
+  margin-bottom:10px;
+  text-transform:uppercase;
+}
 
-        .hero p {
-            font-size: 20px;
-            line-height: 1.7;
-            margin: 8px 0;
-        }
+.sub{
+  font-size:17px;
+  line-height:1.5;
+  margin-bottom:22px;
+  color:#eee;
+}
 
-        .invite {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 16px 32px;
-            background: #facc15;
-            color: #111;
-            border-radius: 40px;
-            font-weight: bold;
-            font-size: 18px;
-            box-shadow: 0 5px 20px rgba(0,0,0,.25);
-        }
+.features{
+  display:grid;
+  gap:12px;
+  margin:22px 0;
+}
 
-        /* =========================
-           CONTAINER
-        ========================== */
+.feature{
+  background:linear-gradient(90deg,#1b1b1b,#2b2208);
+  border:1px solid rgba(212,175,55,.55);
+  padding:14px;
+  border-radius:14px;
+  font-size:17px;
+  font-weight:700;
+}
 
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 45px 20px;
-        }
+.feature span{
+  color:#ffd86b;
+}
 
-        .title {
-            text-align: center;
-            font-size: 32px;
-            margin-bottom: 30px;
-        }
+/* Signup Button */
+.signup-btn{
+  display:inline-block;
+  margin-top:8px;
+  padding:9px 16px;
+  background:#25D366;
+  color:#fff;
+  text-decoration:none;
+  border-radius:9px;
+  font-size:15px;
+  font-weight:800;
+  border:1px solid #1ebe5d;
+  transition:.3s;
+}
 
-        /* =========================
-           TEAMS
-        ========================== */
+.signup-btn:hover{
+  background:#1ebe5d;
+  transform:scale(1.03);
+}
 
-        .teams {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-            gap: 16px;
-        }
+.website-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-top:16px;
+  font-size:14px;
+  font-weight:bold;
+}
 
-        .team {
-            background: white;
-            padding: 22px 15px;
-            text-align: center;
-            border-radius: 14px;
-            font-weight: bold;
-            font-size: 17px;
-            box-shadow: 0 5px 18px rgba(0,0,0,.08);
-            transition: transform .2s, box-shadow .2s;
-        }
+.website-row a{
+  text-decoration:none;
+}
 
-        .team:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,.12);
-        }
+.website{
+  color:#25D366;
+}
 
-        /* =========================
-           MATCH SCHEDULE
-        ========================== */
+.whatsapp-small{
+  color:#ffd86b;
+}
 
-        .matches {
-            display: grid;
-            gap: 18px;
-        }
+.cta{
+  display:block;
+  background:#25D366;
+  color:#fff;
+  text-decoration:none;
+  padding:17px;
+  border-radius:16px;
+  font-size:20px;
+  font-weight:900;
+  margin-top:22px;
+  box-shadow:0 8px 18px rgba(37,211,102,.35);
+  transition:.3s;
+}
 
-        .match {
-            background: white;
-            padding: 22px;
-            border-radius: 14px;
-            border-left: 6px solid #dc2626;
-            box-shadow: 0 5px 18px rgba(0,0,0,.08);
-        }
+.cta:hover{
+  transform:scale(1.03);
+  background:#1ebe5d;
+}
 
-        .match h3 {
-            color: #dc2626;
-            margin-bottom: 9px;
-            font-size: 20px;
-        }
+/* Floating Signup Button */
+.floating-signup{
+  position:absolute;
+  top:20px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:50;
+  background:#ff1744;
+  color:#fff;
+  padding:12px 24px;
+  border-radius:8px;
+  font-size:18px;
+  font-weight:900;
+  border:3px solid #fff;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(255,23,68,0.6);
+  transition:.3s;
+  text-decoration:none;
+  display:inline-block;
+}
 
-        .date {
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #555;
-        }
+.floating-signup:hover{
+  transform:translateX(-50%) scale(1.08);
+  background:#ff5722;
+  box-shadow:0 12px 25px rgba(255,23,68,0.8);
+}
 
-        .teams-match {
-            font-size: 19px;
-            font-weight: bold;
-        }
+.trust{
+  margin-top:16px;
+  color:#ccc;
+  font-size:14px;
+  line-height:1.5;
+}
 
-        /* =========================
-           FINAL
-        ========================== */
+.footer{
+  margin-top:18px;
+  font-size:12px;
+  color:#aaa;
+  line-height:1.5;
+}
 
-        .final {
-            background: linear-gradient(
-                135deg,
-                #fff7cc,
-                #ffffff
-            );
+@media(max-width:768px){
+  .container{
+    flex-direction:column-reverse;
+  }
 
-            border-left-color: #f59e0b;
-            padding: 28px 22px;
-        }
+  .demo,
+  .right{
+    width:100%;
+  }
 
-        .final h3 {
-            color: #b45309;
-            font-size: 25px;
-        }
+  iframe{
+    height:500px;
+  }
 
-        .final .teams-match {
-            font-size: 21px;
-        }
+  .right{
+    padding:20px;
+  }
+}
 
-        /* =========================
-           INVITATION SECTION
-        ========================== */
+@media(max-width:480px){
+  h1{
+    font-size:28px;
+  }
 
-        .invitation {
-            background: #111827;
-            color: white;
-            text-align: center;
-            padding: 65px 20px;
-            margin-top: 20px;
-        }
+  .sub{
+    font-size:16px;
+  }
 
-        .invitation h2 {
-            font-size: 38px;
-            margin-bottom: 20px;
-        }
+  .feature{
+    font-size:16px;
+    padding:12px;
+  }
 
-        .invitation p {
-            max-width: 750px;
-            margin: auto;
-            font-size: 18px;
-            line-height: 1.8;
-        }
+  .signup-btn{
+    font-size:14px;
+    padding:8px 13px;
+  }
 
-        .cta {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 16px 35px;
-            background: #dc2626;
-            color: white;
-            text-decoration: none;
-            border-radius: 35px;
-            font-weight: bold;
-            font-size: 17px;
-            transition: .2s;
-        }
+  .cta{
+    font-size:18px;
+    padding:15px;
+  }
 
-        .cta:hover {
-            background: #b91c1c;
-            transform: scale(1.03);
-        }
+  .website-row{
+    flex-direction:column;
+    gap:8px;
+  }
+}
+</style>
 
-        /* =========================
-           FOOTER
-        ========================== */
-
-        footer {
-            background: #000;
-            color: white;
-            text-align: center;
-            padding: 28px 20px;
-        }
-
-        footer p {
-            margin: 6px 0;
-        }
-
-        /* =========================
-           MOBILE
-        ========================== */
-
-        @media (max-width: 600px) {
-
-            .hero {
-                min-height: 70vh;
-            }
-
-            .logo {
-                font-size: 42px;
-                letter-spacing: 4px;
-            }
-
-            .hero h2 {
-                font-size: 29px;
-            }
-
-            .hero p {
-                font-size: 16px;
-            }
-
-            .invite {
-                font-size: 15px;
-                padding: 14px 22px;
-            }
-
-            .title {
-                font-size: 26px;
-            }
-
-            .teams-match {
-                font-size: 16px;
-            }
-
-            .invitation h2 {
-                font-size: 28px;
-            }
-
-            .invitation p {
-                font-size: 16px;
-            }
-        }
-    </style>
 </head>
 
 <body>
 
-    <!-- =========================
-         HERO / INVITATION
-    ========================== -->
-
-    <section class="hero">
-
-        <div class="hero-content">
-
-            <div class="logo">🏏 MULTICRIC</div>
-
-            <h2>You're Invited!</h2>
-
-            <p>
-                Come and watch the excitement, passion,
-                big hits and big sixes of our
-                <strong>Gully Cricket Tournament 2026!</strong>
-            </p>
-
-            <p>
-                📅 20 September 2026 – 20 October 2026
-            </p>
-
-            <div class="invite">
-                🎉 COME WATCH • CHEER • ENJOY 🎉
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         TEAMS
-    ========================== -->
-
-    <section class="container">
-
-        <h2 class="title">
-            🏆 Meet the Teams
-        </h2>
-
-        <div class="teams">
-
-            <div class="team">🔥 Gully Gladiators</div>
-
-            <div class="team">⚡ Street Strikers</div>
-
-            <div class="team">👑 Gully Kings</div>
-
-            <div class="team">💥 Desi Destroyers</div>
-
-            <div class="team">🏏 Gully Warriors</div>
-
-            <div class="team">🦅 Batting Baaz</div>
-
-            <div class="team">🚀 Sixer Squad</div>
-
-            <div class="team">⭐ Street Legends</div>
-
-            <div class="team">🔥 Gully Gang</div>
-
-            <div class="team">💪 Power Hitters</div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         MATCH SCHEDULE
-    ========================== -->
-
-    <section class="container">
-
-        <h2 class="title">
-            📅 Match Schedule
-        </h2>
-
-        <div class="matches">
-
-            <!-- MATCH 1 -->
-
-            <div class="match">
-
-                <h3>🏏 Match 1</h3>
-
-                <div class="date">
-                    20 September 2026
-                </div>
-
-                <div class="teams-match">
-                    Gully Gladiators 🆚 Street Strikers
-                </div>
-
-            </div>
-
-
-            <!-- MATCH 2 -->
-
-            <div class="match">
-
-                <h3>🏏 Match 2</h3>
-
-                <div class="date">
-                    21 September 2026
-                </div>
-
-                <div class="teams-match">
-                    Gully Kings 🆚 Desi Destroyers
-                </div>
-
-            </div>
-
-
-            <!-- MATCH 3 -->
-
-            <div class="match">
-
-                <h3>🏏 Match 3</h3>
-
-                <div class="date">
-                    22 September 2026
-                </div>
-
-                <div class="teams-match">
-                    Gully Warriors 🆚 Batting Baaz
-                </div>
-
-            </div>
-
-
-            <!-- MATCH 4 -->
-
-            <div class="match">
-
-                <h3>🏏 Match 4</h3>
-
-                <div class="date">
-                    23 September 2026
-                </div>
-
-                <div class="teams-match">
-                    Sixer Squad 🆚 Street Legends
-                </div>
-
-            </div>
-
-
-            <!-- MATCH 5 -->
-
-            <div class="match">
-
-                <h3>🏏 Match 5</h3>
-
-                <div class="date">
-                    24 September 2026
-                </div>
-
-                <div class="teams-match">
-                    Gully Gang 🆚 Power Hitters
-                </div>
-
-            </div>
-
-
-            <!-- SEMI FINAL 1 -->
-
-            <div class="match">
-
-                <h3>🥇 Semi-Final 1</h3>
-
-                <div class="date">
-                    27 September 2026
-                </div>
-
-                <div class="teams-match">
-                    Winner Match 1 🆚 Winner Match 2
-                </div>
-
-            </div>
-
-
-            <!-- SEMI FINAL 2 -->
-
-            <div class="match">
-
-                <h3>🥈 Semi-Final 2</h3>
-
-                <div class="date">
-                    28 September 2026
-                </div>
-
-                <div class="teams-match">
-                    Winner Match 3 🆚 Winner Match 4
-                </div>
-
-            </div>
-
-
-            <!-- QUALIFIER -->
-
-            <div class="match">
-
-                <h3>🔥 Qualifier</h3>
-
-                <div class="date">
-                    30 September 2026
-                </div>
-
-                <div class="teams-match">
-                    Winner Match 5 🆚 Best Performing Losing Team
-                </div>
-
-            </div>
-
-
-            <!-- GRAND FINAL -->
-
-            <div class="match final">
-
-                <h3>🏆 GRAND FINAL</h3>
-
-                <div class="date">
-                    20 October 2026
-                </div>
-
-                <div class="teams-match">
-                    🏏 FINALISTS 🆚 FINALISTS 🏏
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         AUDIENCE INVITATION
-    ========================== -->
-
-    <section class="invitation">
-
-        <h2>
-            🎉 Come Be Part of the Action!
-        </h2>
-
-        <p>
-            Bring your friends, family and cricket spirit!
-            Come and watch the players battle it out in the
-            <strong>MULTICRIC Gully Cricket Tournament.</strong>
-            Cheer for your favourite team, enjoy the atmosphere
-            and experience an unforgettable day of cricket,
-            fun and entertainment.
-        </p>
-
-        <a href="#" class="cta">
-            🏏 COME WATCH THE MATCH
-        </a>
-
-    </section>
-
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
-    <footer>
-
-        <p>
-            🏏 <strong>MULTICRIC</strong>
-        </p>
-
-        <p>
-            Gully Cricket Tournament 2026
-        </p>
-
-        <p>
-            Come for the cricket. Stay for the excitement! 🔥
-        </p>
-
-    </footer>
+<div class="container">
+
+  <div class="demo">
+    <a href="http://www.multicric.com/?code=266ice" target="_blank" rel="noopener noreferrer" class="floating-signup">🔥 CLICK ON SIGNUP 🔥</a>
+    <iframe src="http://www.multicric.com/?code=266ice"></iframe>
+  </div>
+
+  <div class="right">
+    <div class="box">
+
+```
+  <div class="badge">AUTO WEBSITE</div>
+
+  <h1>Get Your ID Now</h1>
+
+  <p class="sub">
+    Fast auto website service with easy deposit support.
+    New users can start quickly through WhatsApp.
+  </p>
+
+  <div class="features">http://www.multicric.com/?code=266ice
+
+    <div class="feature">
+      Minimum Deposit: <span>₹100 Only</span>
+    </div>
+
+    <div class="feature">
+      Welcome Bonus: <span>10%</span>
+    </div>
+
+    <div class="feature">
+      Auto Website Support:
+      <a
+        class="signup-btn"
+        href="http://www.multicric.com/?code=266ice"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Click on Signup
+      </a>
+    </div>
+
+    <div class="feature">
+      Quick Help:
+      <span>Deposit &amp; Withdrawal Support</span>
+    </div>
+
+  </div>
+
+  <div class="website-row">
+
+    <a
+      class="website"
+      href="http://www.multicric.com/?code=266ice"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      🌐 http://www.multicric.com/?code=266ice
+    </a>
+
+    <a
+      class="whatsapp-small"
+      href="https://wa.me/+447523709988"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      💬 WhatsApp
+    </a>
+
+  </div>
+
+  <a
+    class="cta"
+    href="https://wa.me/+447523709988?text=Hello%20I%20want%20new%20manual%20ID"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    📲 WhatsApp Now
+  </a>
+
+  <p class="trust">
+    ✅ Trusted Manual Support<br>
+    ✅ Simple Process<br>
+    ✅ Fast Response
+  </p>
+
+  <div class="footer">
+    18+ Only | Play Responsibly | Follow Your Local Laws | T&amp;C Apply
+  </div>
+
+</div>
+```
+
+  </div>
+
+</div>
 
 </body>
 </html>
-```
